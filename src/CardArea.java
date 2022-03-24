@@ -14,6 +14,30 @@ public class CardArea {
     {
         importPokemonNames();
         board = new String[6][6];
+        cardNames = new String[36];
+    }
+
+    public void setAnswers()
+    {
+        for (int i = 0; i < cardNames.length / 2; i++)
+        {
+            int random = (int) (Math.random() * pokemons.size()) + 1;
+            cardNames[i] = pokemons.get(random);
+            cardNames[i + 18] = cardNames[i];
+        }
+        for (int i = 0; i < cardNames.length; i++)
+        {
+            int random1 = (int) (Math.random() * cardNames.length) + 1;
+            int random2 = (int) (Math.random() * cardNames.length) + 1;
+            String temp = cardNames[random1];
+            cardNames[random1] = cardNames[random2];
+            cardNames[random2] = temp;
+        }
+        for (int i = 0; i < cardNames.length; i++)
+        {
+            System.out.println(cardNames[i]);
+        }
+
 
     }
 
