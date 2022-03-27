@@ -12,7 +12,6 @@ public class CardArea {
     private ArrayList<String> pokemons;
     private int highest;
     private Scanner scan;
-    private String[] cards;
     private ArrayList<Integer> usedNum;
 
     public CardArea ()
@@ -22,7 +21,6 @@ public class CardArea {
         cardNames = new String[36];
         highest = 0;
         scan = new Scanner(System.in);
-        cards = new String[36];
         usedNum = new ArrayList<Integer>();
     }
 
@@ -46,17 +44,21 @@ public class CardArea {
             cardNames[random1] = cardNames[random2];
             cardNames[random2] = temp;
         }
-        for (int i = 0; i < cards.length; i++)
+        for (int row = 0; row < board.length; row++)
         {
-            cards[i] = "";
+            for (int col = 0; col < board[0].length; col++)
+            {
+                board[row][col] = "";
+            }
         }
+
     }
 
     public void drawBoard() {
         int count = 0;
         for (int row = 0; row < board.length; row++) {
             for (int col = 0; col < board[0].length; col++) {
-                if (!cards[count].equals(cardNames[count])) {
+                if (!board[row][col].equals(cardNames[count])) {
                     count++;
                     for (int i = 0; i < highest - 1; i++) {
                         System.out.print(" ");
@@ -85,6 +87,10 @@ public class CardArea {
 
     public void flipCards()
     {
+        int row1 = 0;
+        int row2 = 0;
+        int col1 = 0;
+        int col2 = 0;
         System.out.print("Enter a number: ");
         int number = scan.nextInt();
         while (usedNum.contains(number) || number > 36)
@@ -101,11 +107,13 @@ public class CardArea {
                     for (int i = 0; i < 5; i++) {
                         System.out.print(" ");
                     }
-                    cards[count] = cardNames[count];
+                    board[row][col] = cardNames[count];
+                    row1 = row;
+                    col1 = col;
                     System.out.print(cardNames[count]);
                     count++;
                 }
-                else if (!cards[count].equals(cardNames[count]))
+                else if (!board[row][col].equals(cardNames[count]))
                 {
                     count++;
                     for (int i = 0; i < highest - 1; i++) {
@@ -139,7 +147,7 @@ public class CardArea {
 
         System.out.print("Enter another number: ");
         int number2 = scan.nextInt();
-        while (usedNum.contains(number2) || number > 36)
+        while (usedNum.contains(number2) || number2 > 36)
         {
             System.out.print("Invalid number, please enter another number: ");
             number2 = scan.nextInt();
@@ -153,11 +161,13 @@ public class CardArea {
                     for (int i = 0; i < 5; i++) {
                         System.out.print(" ");
                     }
-                    cards[count2] = cardNames[count2];
+                    board[row][col] = cardNames[count2];
+                    row2 = row;
+                    col2 = col;
                     System.out.print(cardNames[count2]);
                     count2++;
                 }
-                else if(!cards[count2].equals(cardNames[count2]))
+                else if(!board[row][col].equals(cardNames[count2]))
                 {
                     count2++;
                     for (int i = 0; i < highest - 1; i++) {
@@ -189,15 +199,15 @@ public class CardArea {
         System.out.println((Memory.getPlayer1()).getName() + "'s Cards: " + (Memory.getPlayer1()).getPlayerCards());
         System.out.println((Memory.getPlayer2()).getName() + "'s Cards: " + (Memory.getPlayer2()).getPlayerCards());
 
-        if (cards[number - 1].equals(cards[number2 - 1]))
+        if (board[row1][col1].equals(board[row2][col2]))
         {
             System.out.println("Congrulations " + Memory.getCurrentPlayer().getName() + " you have matched a pair of pokemon!");
-            Memory.getCurrentPlayer().addPlayerCards(cards[number - 1]);
+            Memory.getCurrentPlayer().addPlayerCards(board[row1][col1]);
         }
         else {
             System.out.println("Very sad, your pair doesn't match!");
-            cards[number - 1] = "";
-            cards[number2 - 1] = "";
+            board[row1][col1] = "";
+            board[row2][col2] = "";
             usedNum.remove(usedNum.size() - 1);
             usedNum.remove(usedNum.size() - 1);
             Memory.changePlayer();
@@ -210,11 +220,14 @@ public class CardArea {
 
     public boolean checkFinish()
     {
-        for (int i = 0; i < cards.length; i++)
+        for (String[] row : board)
         {
-            if (cards[i].equals(""))
+            for (String card : row)
             {
-                return true;
+                if (card.equals(""))
+                {
+                    return true;
+                }
             }
         }
         return false;

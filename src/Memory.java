@@ -80,8 +80,8 @@ public class Memory {
         {
             System.out.println("Congrulations " + player2.getName() + " have won and have found " + player2.getPlayerCards().size() + " pokemonCards!");
         }
-        System.out.println(player1.getPlayerCards());
-        System.out.println(player2.getPlayerCards());
+        System.out.println(player1.getName() + "'s Pokemon Cards: " + player1.getPlayerCards());
+        System.out.println(player2.getName() + "'s Pokemon Cards: " + player2.getPlayerCards());
     }
 
 
