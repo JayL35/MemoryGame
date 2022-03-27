@@ -63,7 +63,7 @@ public class CardArea {
                     }
                     System.out.print(" " + count);
                 } else {
-                    for (int i = 0; i < highest - cardNames[count].length(); i++) {
+                    for (int i = 0; i < 5; i++) {
                         System.out.print(" ");
                     }
                     System.out.print(cardNames[count]);
@@ -87,7 +87,7 @@ public class CardArea {
     {
         System.out.print("Enter a number: ");
         int number = scan.nextInt();
-        while (usedNum.contains(number))
+        while (usedNum.contains(number) || number > 36)
         {
             System.out.print("Invalid number, please enter another number: ");
             number = scan.nextInt();
@@ -98,7 +98,7 @@ public class CardArea {
             for (int col = 0; col < board[0].length; col++) {
                 if (count == number - 1)
                 {
-                    for (int i = 0; i < highest - cardNames[count].length(); i++) {
+                    for (int i = 0; i < 5; i++) {
                         System.out.print(" ");
                     }
                     cards[count] = cardNames[count];
@@ -139,7 +139,7 @@ public class CardArea {
 
         System.out.print("Enter another number: ");
         int number2 = scan.nextInt();
-        while (usedNum.contains(number2))
+        while (usedNum.contains(number2) || number > 36)
         {
             System.out.print("Invalid number, please enter another number: ");
             number2 = scan.nextInt();
@@ -150,7 +150,7 @@ public class CardArea {
             for (int col = 0; col < board[0].length; col++) {
                 if (count2 == number2 - 1)
                 {
-                    for (int i = 0; i < highest - cardNames[count2].length(); i++) {
+                    for (int i = 0; i < 5; i++) {
                         System.out.print(" ");
                     }
                     cards[count2] = cardNames[count2];

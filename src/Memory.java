@@ -72,6 +72,16 @@ public class Memory {
             System.out.println(currentPlayer.getName() + "'s Turn.");
             game.flipCards();
         }
+        if ((player1.getPlayerCards()).size() > (player2.getPlayerCards()).size())
+        {
+            System.out.println("Congrulations " + player1.getName() + " have won and have found " + player1.getPlayerCards().size() + " pokemonCards!");
+        }
+        else
+        {
+            System.out.println("Congrulations " + player2.getName() + " have won and have found " + player2.getPlayerCards().size() + " pokemonCards!");
+        }
+        System.out.println(player1.getPlayerCards());
+        System.out.println(player2.getPlayerCards());
     }
 
 
