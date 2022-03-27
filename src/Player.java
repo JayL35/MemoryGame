@@ -14,4 +14,14 @@ public class Player {
     {
         return name;
     }
+
+    public ArrayList<String> getPlayerCards()
+    {
+        return playerCards;
+    }
+
+    public void addPlayerCards(String card)
+    {
+        playerCards.add(card);
+    }
 }
