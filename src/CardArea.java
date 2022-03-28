@@ -212,10 +212,6 @@ public class CardArea {
             usedNum.remove(usedNum.size() - 1);
             Memory.changePlayer();
         }
-        System.out.println(number);
-        System.out.println(number2);
-        System.out.println(usedNum);
-        System.out.println(usedNum.contains(number2));
     }
 
     public boolean checkFinish()

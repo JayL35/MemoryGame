@@ -6,7 +6,6 @@ public class Memory {
     private static Player player2;
     public static  Player currentPlayer;
     private CardArea game;
-    public static boolean end;
 
     public Memory()
     {
@@ -14,7 +13,6 @@ public class Memory {
         player2 = null;
         currentPlayer = null;
         game = null;
-        end = true;
     }
 
     public static Player getCurrentPlayer()
